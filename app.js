@@ -6,6 +6,10 @@ import AuthenticationRoutes from "./src/Routes/Authentication.routes.js";
 import mongodb from "./src/Services/Monogodb.services.js";
 import { config } from "dotenv";
 import UserRoute from "./src/Routes/User.routes.js";
+import { ObjectId } from "mongodb";
+import path from 'path'
+import AdminRoutes from "./src/Routes/Admin.routes.js";
+import ProductRoute from "./src/Routes/Product.routes.js";
 
 config()
 const PORT= 4000
@@ -27,8 +31,13 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(AuthenticationRoutes)
 app.use(UserRoute)
-
+app.use(AdminRoutes) 
+app.use('/product',ProductRoute)
+app.use('/assets/images',express.static('./ProductImages'))
 app.use((req,res)=>{
+    console.log(new ObjectId().toHexString());
+    console.log(path.resolve());
+    res.statusCode=404
 res.send("Not Found")
 })
 

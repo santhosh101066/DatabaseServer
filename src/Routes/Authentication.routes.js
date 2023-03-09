@@ -4,9 +4,7 @@ import {
   register,
   validate,
 } from "../Controller/Authentication.controller.js";
-import mongodb from "../Services/Monogodb.services.js";
-import { compareSync } from "bcrypt";
-import { jwtGenerator, jwtVerify } from "../Models/Register.model.js";
+import { jwtVerify } from "../Models/Register.model.js";
 
 const router = Router();
 router.post("/register", register);
