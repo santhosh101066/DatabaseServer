@@ -8,7 +8,7 @@ export const register = async (req, res) => {
     req.body.password = hashSync(req.body.password, 10);
     req.body.type = "user";
     try {
-      const respose = await mongodb.register(req.body);
+      await mongodb.register(req.body);
       res.end();
     } catch (e) {
       console.log(e);

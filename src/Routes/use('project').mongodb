@@ -1,0 +1,74 @@
+use('project')
+
+// db.cart.aggregate([
+//   {
+//   $match: {
+//     "user_id": "640587f9cb600e5c8a5e8e01"
+//   }},
+//   {
+//   $addFields: {
+//     p_ids: {$toObjectId:"$p_id"}
+//   }},
+//   {
+//   $lookup: {
+//     from: "product",
+//     localField: "p_ids",
+//     foreignField: "_id",
+//     as: "carts"
+//   }},
+//   { $unwind: "$carts" },
+//   {
+//     $project: {
+//       _id:0,
+//       id:"$p_id",
+//       cart_id:{$toString:"$_id"},
+//       title:"$carts.title",
+//       maxQty:"$carts.quantity",
+//       quantity:1,
+//       price:"$carts.price",
+//     }
+//   }
+// ])
+
+// db.cart.find()
+// db.cart.updateOne({
+//   _id:ObjectId("640ff52ff88f108f55651cde")
+// },{$inc:{quantity:1}})
+
+// db.wishlist.aggregate([
+//   {
+//   $match: {
+//     "user_id": "640587f9cb600e5c8a5e8e01"
+//   }},
+//   {
+//   $addFields: {
+//     p_ids: {$toObjectId:"$p_id"}
+//   }},
+//   {
+//   $lookup: {
+//     from: "product",
+//     localField: "p_ids",
+//     foreignField: "_id",
+//     as: "carts"
+//   }},
+//   { $unwind: "$carts" },
+//   {
+//     $project: {
+//       _id:0,
+//       id:"$p_id",
+//       cart_id:{$toString:"$_id"},
+//       title:"$carts.title",
+//       quantity:"$carts.quantity",
+//       price:"$carts.price",
+//     }
+//   }
+// ])
+
+// db.product.aggregate([{
+//   $match:{
+//   {$text:{$search:"hap"}}
+//   }}
+//   ])
+
+db.product.find({$text:{$search:"aspire"}})
+// db.product.createIndex({more_details:"text"})

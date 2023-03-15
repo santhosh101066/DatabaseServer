@@ -41,4 +41,11 @@ export const addProduct = async (req, res) => {
     res.statusMessage = err;
     res.end()
   }
+
 };
+
+export const editProduct= async (req, res) => {
+  await mongodb.editProduct(req.body);
+  res.statusCode = 200;
+  res.end();
+}
